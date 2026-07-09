@@ -90,7 +90,7 @@ async def test_script_tool_description_includes_aliases(
     hass: HomeAssistant, entity_registry: er.EntityRegistry
 ) -> None:
     """Test the script tool description is extended with the entity aliases."""
-    entity_registry.async_update_entity(ENTITY_ID, aliases={"barkeep", "pour a drink"})
+    entity_registry.async_update_entity(ENTITY_ID, aliases=["barkeep", "pour a drink"])
     result = await llm_component.async_get_tools(hass, _llm_context(), "assist")
     tool = next(tool for tool in result.tools if tool.name == "test_script")
     assert tool.description == (
