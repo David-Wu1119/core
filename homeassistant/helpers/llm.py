@@ -732,20 +732,6 @@ def _get_cached_action_parameters(
 
         parameters = vol.Schema(schema)
 
-        if domain == SCRIPT_DOMAIN:
-            entity_registry = er.async_get(hass)
-            if (
-                entity_id := entity_registry.async_get_entity_id(domain, domain, action)
-            ) is not None and (
-                entity_entry := entity_registry.async_get(entity_id)
-            ) is not None:
-                aliases = er.async_get_entity_aliases(hass, entity_entry)
-                if aliases:
-                    if description:
-                        description = description + ". Aliases: " + str(sorted(aliases))
-                    else:
-                        description = "Aliases: " + str(sorted(aliases))
-
         parameters_cache.setdefault(domain, {})[action] = (description, parameters)
 
     return description, parameters
