@@ -51,11 +51,6 @@ Answer questions about the world truthfully.
 Answer in plain text. Keep it simple and to the point.
 """
 
-NO_ENTITIES_PROMPT = (
-    "Only if the user wants to control a device, tell them to expose entities "
-    "to their voice assistant in Home Assistant."
-)
-
 
 @callback
 def async_render_no_api_prompt(hass: HomeAssistant) -> str:
